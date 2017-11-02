@@ -91,6 +91,7 @@ ENV3/
 
 envs/
 
-container-logs/
+
 redis-data/
+container-logs/
 pgdata/

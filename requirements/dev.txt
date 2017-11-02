@@ -1,0 +1,4 @@
+-r base.txt
+flask-debugtoolbar==0.10.1
+pep8==1.7.0
+flake8==3.3.0
