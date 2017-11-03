@@ -1,0 +1,10 @@
+{{username}},
+
+We heard that you lost your password. Sorry about that.
+
+The verification code you will use to reset your password this time is {{captcha_code}}, please enter the code within 20 minutes to proceed to the next step, otherwise it will expire.
+
+Please ignore this if this is not your operation.
+
+Thanks,
+{{eebook_url}}

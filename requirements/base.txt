@@ -4,3 +4,4 @@ SQLAlchemy==1.1.9
 Flask-SQLAlchemy==2.2
 marshmallow
 Flask-LogConfig==0.4.2
+six
