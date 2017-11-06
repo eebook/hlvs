@@ -4,7 +4,7 @@
 __author__ = "knarfeh@outlook.com"
 
 import logging
-from ..utils.email.send_email import Email
+from ..utils.email.send_email import send_email
 
 LOGGER = logging.getLogger(__name__)
 
@@ -12,6 +12,5 @@ LOGGER = logging.getLogger(__name__)
 class NotificationClient(object):
     def send_email(self, data):
         LOGGER.debug('Sending email with data: %s', data)
-        email = Email(data)
-        email.send()
+        send_email.delay(data)
 

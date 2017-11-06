@@ -9,7 +9,6 @@ from werkzeug.exceptions import HTTPException, default_exceptions
 from flask import Flask, Blueprint, request, jsonify
 from flask_logconfig import LogConfig
 
-
 from config import config
 from .common.exceptions import APIException
 from .common.middleware import response

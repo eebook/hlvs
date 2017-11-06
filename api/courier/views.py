@@ -21,7 +21,6 @@ LOGGER = logging.getLogger(__name__)
 @json
 def send_message():
     data = request.json
-    LOGGER.info('data??? %s', data)
     NotificationClient().send_email(data)
     return {}, status.HTTP_204_NO_CONTENT
 

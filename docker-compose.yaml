@@ -1,13 +1,13 @@
 version: '2'
 services:
-  api:
+  hlvs:
     image: $HLVS_IMAGE
     build:
       context: .
       dockerfile: ./Dockerfile
     # entrypoint: [python, manage.py]
     # command: [runserver, '--host', '0.0.0.0', '--port', '80']
-    entrypoint: [sh]
+    # entrypoint: [sh]
     volumes:
       - .:/src
       - ./container-logs:/var/log/eebook
@@ -19,8 +19,9 @@ services:
       - envs/secret.env
     environment:
       - ENV="development"
+      - no_proxy=true
     networks:
-      - vlfw
+      - hlvs 
   redis:
     image: "redis:alpine"
     ports:
@@ -28,8 +29,8 @@ services:
     volumes:
       - ./redis-data:/data
     networks:
-      - vlfw
+      - hlvs
 
 networks:
-  vlfw:
+  hlvs:
     driver: bridge

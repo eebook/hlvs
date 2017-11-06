@@ -5,3 +5,7 @@ Flask-SQLAlchemy==2.2
 marshmallow
 Flask-LogConfig==0.4.2
 six
+celery==4.1.0
+redis
+msgpack-python
+
