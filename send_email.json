@@ -1,9 +1,8 @@
 {
-    "email_type": "register",
-    "recipient_list": ["knarfeh@outlook.com"],
-    "language_code": "en",
-    "params": {
-        "wey": "activationkey"
-    },
-    "email_format": "txt"
+	"email_type": "verify_code",
+	"recipient_list": ["knarfeh@outlook.com"],
+	"params": {
+		"username": "knarfeh",
+		"captcha_code": "734993"
+	}
 }

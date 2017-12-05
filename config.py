@@ -40,7 +40,7 @@ class Config(object):
         'template_path': 'email',
         'sender': os.getenv('EMAIL_FROM', '2559775198@qq.com'),
         'debug_cc_email': 'knarfeh@outlook.com',
-        'eebook_url': os.getenv('EEBOOK_URL') or 'https://www.eebook.com',
+        'eebook_url': os.getenv('EEBOOK_URL', 'https://www.eebook.com'),
     }
 
     @staticmethod

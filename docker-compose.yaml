@@ -1,7 +1,8 @@
 version: '2'
 services:
   hlvs:
-    image: $HLVS_IMAGE
+    # image: $HLVS_IMAGE
+    image: knarfeh/hlvs
     build:
       context: .
       dockerfile: ./Dockerfile
@@ -20,6 +21,13 @@ services:
     environment:
       - ENV="development"
       - no_proxy=true
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_BROKER_BACKEND=redis://redis:6379/0
+      # - SMTP_SERVER_HOST=smtp-mail.outlook.com
+      - SMTP_SERVER_HOST=smtp.mailgun.org
+      - SMTP_SERVER_PORT=465
+      - SMTP_USERNAME=meownway@mg.meownway.com
+      - EMAIL_FROM=eebook@eebook.org
     networks:
       - hlvs 
   redis:
