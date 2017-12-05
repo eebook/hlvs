@@ -9,6 +9,8 @@ import six
 from flask import jsonify
 from werkzeug.routing import BaseConverter
 
+def str2bool(v):
+    return v and v.lower() in ("yes", "true", "t", "1")
 
 def generate_uuid():
    return str(uuid.uuid4())

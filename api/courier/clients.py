@@ -13,4 +13,5 @@ class NotificationClient(object):
     def send_email(self, data):
         LOGGER.debug('Sending email with data: %s', data)
         send_email.delay(data)
+        # send_email(data)
 

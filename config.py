@@ -43,6 +43,13 @@ class Config(object):
         'eebook_url': os.getenv('EEBOOK_URL', 'https://www.eebook.com'),
     }
 
+    EMAIL_USE_HTTP = os.getenv('EMAIL_USE_HTTP', 'false')
+
+    MAILGUN_CONFIG = {
+        'MAIL_DOMAIN_NAME': os.getenv('MAIL_DOMAIN_NAME', None),
+        'MAIL_API_KEY': os.getenv('MAIL_API_KEY', None)
+    }
+
     @staticmethod
     def init_app(app):
         pass

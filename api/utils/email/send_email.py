@@ -19,6 +19,7 @@ from jinja2 import Template
 from .. import get_template_content
 from api.celery import celery_app
 from config import config
+from api.common.utils import str2bool
 
 
 LOGGER = logging.getLogger(__name__)
@@ -66,6 +67,18 @@ def send_email(_data):
             msg['Bcc'] = debug_cc_email
             if debug_cc_email not in recipient_list:  # TODO: do we need it
                 recipient_list.append(debug_cc_email)
+    if str2bool(Config.EMAIL_USE_HTTP):
+        requests.post(
+            "https://api.mailgun.net/v3/"+Config.MAILGUN_CONFIG['MAIL_DOMAIN_NAME']+'/messages',
+            auth=("api", Config.MAILGUN_CONFIG["MAIL_API_KEY"]),
+            data={
+                "from": sender,
+                "to": recipient_list,
+                "suject": Template(subject_template).render(email_param),
+                "text": Template(message_template).render(email_param)
+            }
+        )
+        return
 
     server = None
     exception_traceback = None

@@ -8,4 +8,5 @@ six
 celery==4.1.0
 redis
 msgpack-python
+requests
 
