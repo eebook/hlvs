@@ -1,0 +1,10 @@
+{{username}},
+
+Only one step left to use your account.
+
+Please click the link below to activate your account
+
+{{activation_url}}
+
+Thanks,
+{{eebook_url}}

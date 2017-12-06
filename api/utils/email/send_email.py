@@ -9,6 +9,8 @@ __author__ = "knarfeh@outlook.com"
 import smtplib
 import logging
 import traceback
+
+import requests
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.header import Header
@@ -68,13 +70,14 @@ def send_email(_data):
             if debug_cc_email not in recipient_list:  # TODO: do we need it
                 recipient_list.append(debug_cc_email)
     if str2bool(Config.EMAIL_USE_HTTP):
+        LOGGER.info('Send email with mailgun')
         requests.post(
             "https://api.mailgun.net/v3/"+Config.MAILGUN_CONFIG['MAIL_DOMAIN_NAME']+'/messages',
             auth=("api", Config.MAILGUN_CONFIG["MAIL_API_KEY"]),
             data={
                 "from": sender,
                 "to": recipient_list,
-                "suject": Template(subject_template).render(email_param),
+                "subject": Template(subject_template).render(email_param),
                 "text": Template(message_template).render(email_param)
             }
         )
