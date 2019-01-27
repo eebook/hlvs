@@ -21,25 +21,17 @@ services:
     environment:
       - ENV="development"
       - no_proxy=true
-      - CELERY_BROKER_URL=redis://redis:6379/0
-      - CELERY_BROKER_BACKEND=redis://redis:6379/0
+      - CELERY_BROKER_URL=redis://192.168.199.121:16379/0
+      - CELERY_BROKER_BACKEND=redis://192.168.199.121:16379/0
       # - SMTP_SERVER_HOST=smtp-mail.outlook.com
       - SMTP_SERVER_HOST=smtp.mailgun.org
       - SMTP_SERVER_PORT=465
-      - SMTP_USERNAME=meownway@mg.meownway.com
       - EMAIL_FROM=eebook@eebook.org
       - EMAIL_USE_HTTP=true
     networks:
-      - hlvs 
-  redis:
-    image: "redis:alpine"
-    ports:
-      - '6379'
-    volumes:
-      - ./redis-data:/data
-    networks:
-      - hlvs
+      - devbox
 
 networks:
-  hlvs:
-    driver: bridge
+  devbox:
+    external:
+      name: devbox_devbox
