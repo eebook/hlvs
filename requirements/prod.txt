@@ -1,6 +1,1 @@
-flask==0.12.1
-Flask-Script==2.0.5
-SQLAlchemy==1.1.9
-Flask-SQLAlchemy==2.2
-marshmallow
-Flask-LogConfig==0.4.2
+-r base.txt

@@ -34,18 +34,6 @@ def create_app(config_name='dev'):
         content_type = request.headers.get('Content-type')
         if not content_type == 'application/json':
             raise APIException('invalid_content_type')
-    # OUT
-    app.response_class = response.JSONResponse
-
-    # def make_json_error(ex):
-    #     res = jsonify(message=str(ex))
-    #     res.status_code = (ex.code if isinstance(ex, HTTPException) else 500)
-    #     return res
-    #
-    # for code in default_exceptions.keys():
-    #     app.error_handler_spec[None][code] = make_json_error
-
-    response.json_error_handler(app=app)
 
     # Load default configuration
     app.config.from_object(config[config_name])
@@ -59,5 +47,8 @@ def create_app(config_name='dev'):
 
     from .courier import courier_bp
     app.register_blueprint(courier_bp, url_prefix='/v1/email')
+
+    app.response_class = response.JSONResponse
+    response.json_error_handler(app=app)
 
     return app
